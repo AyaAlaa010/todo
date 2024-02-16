@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/features/layout_view.dart';
+
+import '../../settings_providers.dart';
 class SplashScreen extends StatefulWidget {
+
   static String routeName="/";
   const SplashScreen({super.key});
 
@@ -12,7 +16,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     Timer(const Duration(seconds:4),(){
@@ -26,9 +29,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery=MediaQuery.of(context).size;
+    var provider=Provider.of<SettingsProvider>(context);
 
     return Scaffold(
-      body: Image.asset("assets/images/splash.png",height: mediaQuery.height,width: mediaQuery.width,),
+      body: Image.asset(provider.isDark()?"assets/images/splash_dark.png":"assets/images/splash.png",fit:BoxFit.cover,height: mediaQuery.height,width: mediaQuery.width,),
     );
   }
 }
