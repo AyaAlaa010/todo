@@ -9,8 +9,9 @@ import '../../../settings_providers.dart';
 class SettingsCustomDropDown extends StatelessWidget {
   Function onChange;
   List<String>optionsList;
+  String initialValue;
 
-   SettingsCustomDropDown({super.key,required this.optionsList,required this.onChange});
+   SettingsCustomDropDown({super.key,required this.optionsList,required this.onChange,required this.initialValue});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class SettingsCustomDropDown extends StatelessWidget {
                 ? theme.textTheme.bodyMedium!
                 .copyWith(color: AppColors.primaryColor)
                 : theme.textTheme.bodyMedium),
-        initialItem: optionsList[0],
+        initialItem: initialValue,
         onChanged: (value) {
          onChange(value);
 

@@ -8,12 +8,12 @@ import 'package:todo/settings_providers.dart';
 void main() {
   runApp(
       ChangeNotifierProvider(
-          create: (context)=>SettingsProvider(),
-          child:  MyApplication())
+          create: (context)=> SettingsProvider(),
+          child:  const MyApplication())
   );}
 
 class MyApplication extends StatelessWidget {
-   MyApplication({super.key});
+   const MyApplication({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,8 @@ class MyApplication extends StatelessWidget {
       theme: ApplicationThmeManager.lightTheme,
       themeMode: provider.currentTheme,
       routes: {
-        SplashScreen.routeName:(context)=> SplashScreen(),
-        LayoutView.routeName:(context)=> LayoutView()
+        SplashScreen.routeName:(context)=> const SplashScreen(),
+        LayoutView.routeName:(context)=> const LayoutView()
       },
     );
   }

@@ -1,4 +1,3 @@
-import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +22,7 @@ class SettingsView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          padding: EdgeInsetsDirectional.only(top: 50, start: 30),
+          padding: EdgeInsetsDirectional.only(top: 60, start: 30),
           height: mediaQuery.height * 0.2,
           width: mediaQuery.width,
           color: AppColors.primaryColor,
@@ -37,13 +36,13 @@ class SettingsView extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.only(start: 30, top: 30),
+          padding: EdgeInsetsDirectional.only(start: 30, top: 20),
           child: Text("Language",
               style: provider.isDark()
                   ? theme.textTheme.bodyMedium!.copyWith(color: Colors.white)
                   : theme.textTheme.bodyMedium!.copyWith(color: AppColors.darkText)),
         ),
-        SettingsCustomDropDown(optionsList: languagesList, onChange: onChangeLanguage),
+        SettingsCustomDropDown(optionsList: languagesList, onChange: onChangeLanguage,initialValue: languagesList[0]),
         const SizedBox(
           height: 30,
         ),
@@ -55,7 +54,7 @@ class SettingsView extends StatelessWidget {
                   : theme.textTheme.bodyMedium!
                       .copyWith(color: AppColors.darkText)),
         ),
-       SettingsCustomDropDown(optionsList: themesList, onChange: onChangeTheme),
+       SettingsCustomDropDown(optionsList: themesList, onChange: onChangeTheme,initialValue: provider.currentTheme==ThemeMode.light? "Light": "Dark"),
         const Spacer()
       ],
     );

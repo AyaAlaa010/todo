@@ -6,17 +6,17 @@ class SettingsProvider extends ChangeNotifier{
   ThemeMode currentTheme= ThemeMode.light;
 
   List<Widget> navigationScreens=[TasksView(),SettingsView()];
-  int currentItem=0;
+  int currentItemIndex=0;
 
- setCurrentItem(int index){
-   if(currentItem==index) return;
+ setCurrentItemIndex(int index){
+   if(currentItemIndex==index) return;
    else{
-     currentItem=index;
+     currentItemIndex=index;
    }
    notifyListeners();
  }
 
- Widget getCurrentScreen()=> navigationScreens[currentItem];
+ Widget getCurrentScreen()=> navigationScreens[currentItemIndex];
 
 
 
