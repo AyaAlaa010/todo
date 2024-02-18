@@ -14,25 +14,27 @@ class TasksView extends StatefulWidget {
   State<TasksView> createState() => _TasksViewState();
 }
 
+
 class _TasksViewState extends State<TasksView> {
+  DateTime focusDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingsProvider>(context)!;
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
-    DateTime focusDate = DateTime.now();
     return Column(
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.only(bottom: 40),
+          padding: EdgeInsetsDirectional.only(bottom: 55),
           child: Stack(
             alignment: Alignment(0,2.0),
             children:[ Container(
               padding: const EdgeInsetsDirectional.only(top: 60, start: 30),
-              height: mediaQuery.height * 0.2,
+              height: mediaQuery.height * 0.22,
               width: mediaQuery.width,
               color: AppColors.primaryColor,
-              child: Text("To Do List", style: theme.textTheme.titleLarge),
+              child: Text("To Do List", style:provider.isDark() ? theme.textTheme.titleLarge!.copyWith(color:AppColors.onPrimaryDarkColor) :theme.textTheme.titleLarge),
             ),
             EasyInfiniteDateTimeLine(
               showTimelineHeader: false,
@@ -45,24 +47,46 @@ class _TasksViewState extends State<TasksView> {
               dayProps: EasyDayProps(
                   height: 100,
                   inactiveDayStyle: DayStyle(
+                    dayNumStyle: theme.textTheme.bodySmall,
+                      dayStrStyle: theme.textTheme.bodySmall,
+                      monthStrStyle: theme.textTheme.bodySmall,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: provider.isDark()? AppColors.nav_color
+                              :Colors.white,
                           borderRadius:  BorderRadius.circular(10))),
-                  activeDayStyle: DayStyle(
+                  todayStyle:DayStyle(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                      color: Colors.white70,
+                        borderRadius:  BorderRadius.circular(10)
+                    )
+                  ) ,
+
+                  activeDayStyle: DayStyle(
+
+                    decoration: BoxDecoration(
+                        color: provider.isDark()? AppColors.nav_color:Colors.white,
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: AppColors.primaryColor)),
-                    dayNumStyle: theme.textTheme.bodyMedium,
-                    dayStrStyle: theme.textTheme.bodySmall,
-                    monthStrStyle: theme.textTheme.bodySmall,
+                        border: Border.all(color: Colors.black38)),
+                    dayNumStyle: theme.textTheme.bodyMedium?.copyWith(
+                      color: theme.primaryColor,
+                    )
+                    ,
+                    dayStrStyle: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.primaryColor,
+                    ),
+                    monthStrStyle: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.primaryColor,
+                    ),
                   )),
               onDateChange: (selectedDate) {
                 setState(() {
                   focusDate = selectedDate;
                 });
               },
-            ),]
+            ),
+
+
+            ]
 
           ),
         ),
