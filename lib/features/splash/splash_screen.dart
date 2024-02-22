@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/features/layout_view.dart';
+import 'package:todo/features/login/pages/login_view.dart';
 
 import '../../settings_providers.dart';
 class SplashScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds:2),(){
-      Navigator.pushReplacementNamed(context, LayoutView.routeName);
+      Navigator.pushReplacementNamed(context, LoginView.routeName);
 
     });
     super.initState();
