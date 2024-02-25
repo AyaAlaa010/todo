@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:todo/features/settings/widgets/custom_drop_down.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../config/constants/app_colors.dart';
+import '../../../core/config/constants/app_colors.dart';
 import '../../../settings_providers.dart';
 
 class SettingsView extends StatelessWidget {
@@ -27,7 +27,7 @@ class SettingsView extends StatelessWidget {
       children: [
         Container(
           padding: EdgeInsetsDirectional.only(top: 60, start: 30),
-          height: mediaQuery.height * 0.2,
+          height: mediaQuery.height * 0.22,
           width: mediaQuery.width,
           color: AppColors.primaryColor,
           child: Text(

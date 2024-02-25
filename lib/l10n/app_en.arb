@@ -1,5 +1,27 @@
 {
   "settings": "settings",
   "language": "Language",
-  "mode": "Mode"
+  "mode": "Mode",
+  "login": "Login",
+  "welecome_back": "Welcome back!",
+  "email": "E-mail",
+  "enter_email": "Enter your e-mail address",
+  "enter_password": "Enter your password",
+  "password": "Password",
+  "or": "OR",
+  "create_new_account": "create new account!..",
+  "strong_password":"Enter Strong Password",
+  "password_empty":" enter the password ",
+  "valid_email":"Enter valid email address",
+  "email_empty":" enter the email ",
+  "success_login":"Successfully Login",
+  "create_account":"Create Account",
+  "full_name":"Full Name",
+  "full_name_empty":"Full Name is Empty",
+  "enter_name": "Enter Your Name",
+ "confirm_password": "Confirm Password",
+  "enter_confirm_password":"Enter your confirm password ",
+  "confirm_password_empty":"Confirm Password is Empty",
+  "confirm_not_match_password":"Confirm Password not Match Password",
+  "account_created_success":"your Account Created Successfully"
 }

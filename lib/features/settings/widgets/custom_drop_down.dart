@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../config/constants/app_colors.dart';
+import '../../../core/config/constants/app_colors.dart';
 import '../../../settings_providers.dart';
 
 class SettingsCustomDropDown extends StatelessWidget {

@@ -1,5 +1,47 @@
 {
   "settings": "الاعدادات",
   "language": "اللغه",
-  "mode": "النمط"
+  "mode": "النمط",
+  "login": "تسجيل الدخول",
+  "welecome_back": "مرحبًا بعودتك!",
+  "email": "البريد الإلكتروني",
+  "enter_email": "ادخل بريدك الإلكتروني",
+  "enter_password": "ادخل كلمه المرور",
+  "password": "كلمه المرور",
+  "or": "أو",
+  "create_new_account": "إنشاء حساب جديد!..",
+  "strong_password":"أدخل كلمه مرور قويه",
+  "password_empty":"ادخل كلمه المرور",
+  "valid_email":"ادخل صيغه صحيحه للبريد الالكترون ",
+  "email_empty":" ادخل البريد الالكتروني",
+  "success_login":"تم الدخول بنجاح",
+  "create_account":"إنشاء حساب",
+  "full_name":"الاسم بالكامل",
+  "full_name_empty":"ادخل الاسم بالكامل",
+  "enter_name": "ادخل اسمك",
+  "confirm_password": "تأكيد رقم المرور",
+  "enter_confirm_password":" ادخل تأكيد رقم المرو ",
+  "confirm_password_empty":"ادخل رمز تأكيد المرور",
+  "confirm_not_match_password":"رقم المرور التأكيدي لا يساوي رمز المرور",
+  "account_created_success":"تم انشاء حسابك بنجاح"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
