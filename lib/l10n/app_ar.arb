@@ -23,7 +23,19 @@
   "enter_confirm_password":" ادخل تأكيد رقم المرو ",
   "confirm_password_empty":"ادخل رمز تأكيد المرور",
   "confirm_not_match_password":"رقم المرور التأكيدي لا يساوي رمز المرور",
-  "account_created_success":"تم انشاء حسابك بنجاح"
+  "account_created_success":"تم انشاء حسابك بنجاح",
+  "no_user_found_email":"لا يوجد مستخدم لهذا البريد الالكتروني",
+  "wrong_password_user":"رقم المرور غير صحيح",
+  "unkown_error":"خطأ غير معروف",
+  "account_already_exist":  "هذا البريد الالكتروني خاص بحساب موجود من قبل ",
+  "password_weak": "رمز المرور الخاص بك ضعيف",
+  "close": "غلق"
+
+
+
+
+
+
 
 
 

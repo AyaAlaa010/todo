@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/core/service/snakers_service.dart';
 import 'package:todo/core/widgets/custom_textfield_widget.dart';
 import 'package:todo/features/layout_view.dart';
 import 'package:todo/features/register/pages/register_view.dart';
@@ -151,7 +152,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            _login();
+                            _login(context);
                             },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -217,13 +218,13 @@ class _LoginViewState extends State<LoginView> {
               )),
         ));
   }
- void _login(){
+ void _login(BuildContext context){
    if (formKey.currentState!.validate()) {
-     FirebaseUtils()
+     FirebaseUtils(context)
          .login(emailController.text, passwordController.text)
          .then((value) {
        if (value) {
-         BotToast.showText(text:locale.success_login);
+         SnackerService(context).showSuccessMsg(locale.success_login);
          EasyLoading.dismiss();
          Navigator.pushReplacementNamed(context, LayoutView.routeName);
        }

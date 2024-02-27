@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/config/common.dart';
 import '../../../core/config/constants/app_const.dart';
+import '../../../core/service/snakers_service.dart';
 import '../../../core/widgets/custom_textfield_widget.dart';
 import '../../../firebase_utils.dart';
 import '../../layout_view.dart';
@@ -238,11 +239,11 @@ class _RegisterViewState extends State<RegisterView> {
 
   void _register() {
     if (formKey.currentState!.validate()) {
-      FirebaseUtils()
+      FirebaseUtils(context)
           .createAccount(emailController.text, passwordController.text)
           .then((value) {
         if (value) {
-          BotToast.showText(text:locale.account_created_success);
+          SnackerService(context).showSuccessMsg(locale.account_created_success);
           EasyLoading.dismiss();
           Navigator.pushNamedAndRemoveUntil(context, LayoutView.routeName, (route) => false,);
         }

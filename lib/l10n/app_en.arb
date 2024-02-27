@@ -23,5 +23,11 @@
   "enter_confirm_password":"Enter your confirm password ",
   "confirm_password_empty":"Confirm Password is Empty",
   "confirm_not_match_password":"Confirm Password not Match Password",
-  "account_created_success":"your Account Created Successfully"
+  "account_created_success":"your Account Created Successfully",
+  "no_user_found_email":"No user found for that email.",
+  "wrong_password_user":"Wrong password provided for that user.",
+  "unkown_error":"Unknown Error",
+  "account_already_exist":  "The account already exists for that email.",
+ "password_weak": "The password provided is too weak.",
+ "close": "close"
 }
