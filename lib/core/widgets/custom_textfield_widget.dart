@@ -6,11 +6,12 @@ import '../../settings_providers.dart';
 import '../config/constants/app_colors.dart';
 
 class CustomTextField extends StatefulWidget {
-  bool isObscure;
-  String obscureCharacter;
+  bool  isObscure;
+  String  obscureCharacter;
   String? hintText;
   Icon? suffixIcon;
   int maxLines;
+  int ? maxLength;
   TextInputType? textInputType;
   FormFieldValidator<String>? validator;
   TextEditingController ?  controller;
@@ -21,6 +22,7 @@ class CustomTextField extends StatefulWidget {
       this.obscureCharacter = "*",
       this.suffixIcon,
       this.maxLines = 1,
+        this.maxLength,
       this.textInputType,
       this.validator,
       this.controller
@@ -39,6 +41,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       keyboardType: widget.textInputType,
       obscureText: widget.isObscure!,
       maxLines: widget.maxLines,
+      maxLength: widget.maxLength,
       controller: widget.controller,
       onFieldSubmitted: (value){
       },

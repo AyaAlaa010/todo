@@ -37,7 +37,7 @@ class MyApplication extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
-      initialRoute: SplashScreen.routeName,
+      initialRoute: LayoutView.routeName,
       darkTheme: ApplicationThmeManager.darkTheme ,
       theme: ApplicationThmeManager.lightTheme,
       themeMode: provider.currentTheme,

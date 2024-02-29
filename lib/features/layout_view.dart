@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/firebase_utils.dart';
+import '../bottom_sheet.dart';
 import '../models/task_model.dart';
 import '../settings_providers.dart';
 
@@ -18,8 +19,10 @@ class LayoutView extends StatelessWidget {
       extendBody: true,
       floatingActionButtonLocation:  FloatingActionButtonLocation.centerDocked,
       floatingActionButton:FloatingActionButton(onPressed: (){
-        TaskModel data= new TaskModel(title:"work",description: "ddfff",isDone: false,dateTime: DateTime.now());
-        FirebaseUtils(context).addToFirestore(data);},
+            showModalBottomSheet(context: context,backgroundColor: Colors.transparent,
+                builder: (context)=> TaskBottomSheet(),
+            );
+        },
         child: const Icon(Icons.add,color: Colors.white,size: 32,),
       ),
       bottomNavigationBar: BottomAppBar(

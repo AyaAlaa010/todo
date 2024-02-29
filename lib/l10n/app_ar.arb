@@ -29,7 +29,21 @@
   "unkown_error":"خطأ غير معروف",
   "account_already_exist":  "هذا البريد الالكتروني خاص بحساب موجود من قبل ",
   "password_weak": "رمز المرور الخاص بك ضعيف",
-  "close": "غلق"
+  "close": "غلق",
+  "add_new_task":"ادخل مهام جديده",
+  "enter_title": "ادخل عنوان المهام",
+  "must_enter_title": "يجب ادخال العنوان",
+  "enter_description": "ادخل تفاصيل المهام",
+  "must_enter_description":  "يجب ادخال تفاصيل المهام",
+  "add_task":  "ضف مهام",
+  "select_time": "اختار الوقت"
+
+
+
+
+
+
+
 
 
 

@@ -29,5 +29,12 @@
   "unkown_error":"Unknown Error",
   "account_already_exist":  "The account already exists for that email.",
  "password_weak": "The password provided is too weak.",
- "close": "close"
+ "close": "close",
+  "add_new_task":"Add A New Task",
+  "enter_title": "enter your task title",
+  "must_enter_title": " you must enter the title",
+  "enter_description": "enter your task description",
+  "must_enter_description":  " you must enter the description",
+  "add_task":  "Add Task",
+  "select_time": "Select Time"
 }
