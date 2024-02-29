@@ -2,7 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:todo/firebase_utils.dart';
+import '../models/task_model.dart';
 import '../settings_providers.dart';
 
 class LayoutView extends StatelessWidget {
@@ -16,7 +17,9 @@ class LayoutView extends StatelessWidget {
       body: provider.getCurrentScreen(),
       extendBody: true,
       floatingActionButtonLocation:  FloatingActionButtonLocation.centerDocked,
-      floatingActionButton:FloatingActionButton(onPressed: (){},
+      floatingActionButton:FloatingActionButton(onPressed: (){
+        TaskModel data= new TaskModel(title:"work",description: "ddfff",isDone: false,dateTime: DateTime.now());
+        FirebaseUtils(context).addToFirestore(data);},
         child: const Icon(Icons.add,color: Colors.white,size: 32,),
       ),
       bottomNavigationBar: BottomAppBar(

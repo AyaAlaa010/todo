@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:todo/models/task_model.dart';
 import 'core/service/snakers_service.dart';
 
 class FirebaseUtils{
@@ -10,8 +12,23 @@ class FirebaseUtils{
 
   FirebaseUtils(this.context){
      locale= AppLocalizations.of(context)!;
-
   }
+
+
+ CollectionReference<TaskModel> getCollectionRef(){
+    var dp =FirebaseFirestore.instance;
+    return dp.collection("tasks").withConverter<TaskModel>(
+        fromFirestore:(snapshot,_)=> TaskModel.fromFirestore(snapshot.data()!),
+        toFirestore: (taskModel,_)=>taskModel.toFirestore());
+  }
+
+    Future <void> addToFirestore( TaskModel taskModel) {
+    var collectionRef=getCollectionRef();
+    var docRef= collectionRef.doc();
+    return docRef.set(taskModel);
+    }
+
+
 
 
 
