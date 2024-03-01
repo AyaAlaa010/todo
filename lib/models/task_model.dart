@@ -9,10 +9,11 @@ class TaskModel{
 
 
 
-  factory TaskModel.fromFirestore(Map<String,dynamic> responseMap)=> TaskModel(title:responseMap ["title"], description:responseMap[ "description"], isDone: responseMap["isDone"], dateTime: responseMap["dateTime"]);
+  factory TaskModel.fromFirestore(Map<String,dynamic> responseMap)=> TaskModel(id:responseMap ["id"],title:responseMap ["title"], description:responseMap[ "description"], isDone: responseMap["isDone"], dateTime: responseMap["dateTime"]);
 
 
   Map<String ,dynamic> toFirestore()=> {
+    "id":id,
     "title":title,
     "description":description,
     "isDone":isDone,

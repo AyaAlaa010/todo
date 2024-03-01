@@ -36,5 +36,6 @@
   "enter_description": "enter your task description",
   "must_enter_description":  " you must enter the description",
   "add_task":  "Add Task",
-  "select_time": "Select Time"
+  "select_time": "Select Time",
+  "task_success_created": "Task successfully created"
 }

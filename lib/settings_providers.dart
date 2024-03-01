@@ -1,8 +1,11 @@
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:todo/features/settings/pages/settings_view.dart';
 import 'package:todo/features/tasks/pages/tasks_view.dart';
 
 class SettingsProvider extends ChangeNotifier {
+  DateTime selectedTime=DateTime.now();
   ThemeMode currentTheme = ThemeMode.light;
   String currentLanguage = "en";
   List<Widget> navigationScreens = [TasksView(), SettingsView()];
@@ -32,4 +35,15 @@ class SettingsProvider extends ChangeNotifier {
   }
 
   bool isDark() => currentTheme == ThemeMode.dark;
+
+
+  Future selectTime (BuildContext context) async{
+
+    var  currentSelectedTime=  await showDatePicker(context: context,
+        firstDate: DateTime.now(),
+        lastDate: DateTime.now().add( const Duration(days: 365)));
+    if(currentSelectedTime==null) return ;
+     selectedTime=currentSelectedTime;
+     notifyListeners();
+  }
 }

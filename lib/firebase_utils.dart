@@ -25,6 +25,7 @@ class FirebaseUtils{
     Future <void> addToFirestore( TaskModel taskModel) {
     var collectionRef=getCollectionRef();
     var docRef= collectionRef.doc();
+    taskModel.id=docRef.id;
     return docRef.set(taskModel);
     }
 

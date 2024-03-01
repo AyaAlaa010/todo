@@ -36,7 +36,9 @@
   "enter_description": "ادخل تفاصيل المهام",
   "must_enter_description":  "يجب ادخال تفاصيل المهام",
   "add_task":  "ضف مهام",
-  "select_time": "اختار الوقت"
+  "select_time": "اختار الوقت",
+  "task_success_created": "تم انشاء المهام بنجاح"
+
 
 
 

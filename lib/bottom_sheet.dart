@@ -1,6 +1,8 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/core/config/constants/app_colors.dart';
 import 'package:todo/core/service/loading_sevice.dart';
@@ -8,6 +10,7 @@ import 'package:todo/core/widgets/custom_textfield_widget.dart';
 import 'package:todo/settings_providers.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'core/service/snakers_service.dart';
 import 'firebase_utils.dart';
 import 'models/task_model.dart';
 
@@ -83,24 +86,34 @@ class TaskBottomSheet extends StatelessWidget {
                       .copyWith(color: AppColors.darkText),
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                provider.selectTime(context);
+                },
                 child: Text(
-                  "15/04/2023",
+                  DateFormat.yMMMMd().format(provider.selectedTime),
                   style: provider.isDark()
                       ? theme.textTheme.labelMedium
                       : theme.textTheme.labelMedium!
                           .copyWith(color: AppColors.darkText),
                 )),
-           const Spacer(),
+            Spacer(),
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  EasyLoading.show();
                   TaskModel data = TaskModel(
                       title: titleController.text,
                       description: descController.text,
                       isDone: false,
-                      dateTime: DateTime.now());
-                  FirebaseUtils(context).addToFirestore(data);
+                      dateTime:provider.selectedTime,
+                  );
+                  FirebaseUtils(context).addToFirestore(data).then((value) {
+                    EasyLoading.dismiss();
+                    titleController.text="";
+                    descController.text="";
+                    SnackerService(context).showSuccessMsg(locale.task_success_created);
+                    Navigator.pop(context);
+                  });
                 }
               },
               child: Text(
