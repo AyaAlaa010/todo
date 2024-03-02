@@ -14,11 +14,18 @@ import 'core/service/snakers_service.dart';
 import 'firebase_utils.dart';
 import 'models/task_model.dart';
 
-class TaskBottomSheet extends StatelessWidget {
+class TaskBottomSheet extends StatefulWidget {
   TaskBottomSheet({super.key});
+
+  @override
+  State<TaskBottomSheet> createState() => _TaskBottomSheetState();
+}
+
+class _TaskBottomSheetState extends State<TaskBottomSheet> {
   var formKey = GlobalKey<FormState>();
   var titleController = TextEditingController();
   var descController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -26,16 +33,16 @@ class TaskBottomSheet extends StatelessWidget {
     var locale = AppLocalizations.of(context)!;
     var mediaQuery = MediaQuery.of(context).size;
 
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-      width: mediaQuery.width,
-      decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          color:
-              provider.isDark() ? AppColors.onPrimaryDarkColor : Colors.white),
-      child: Form(
-        key: formKey,
+    return Form(
+      key:formKey,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+        width: mediaQuery.width,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            color:
+                provider.isDark() ? AppColors.onPrimaryDarkColor : Colors.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -47,7 +54,7 @@ class TaskBottomSheet extends StatelessWidget {
                   : theme.textTheme.bodyLarge!
                       .copyWith(color: AppColors.darkText),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             CustomTextField(
               controller: titleController,
               textInputType: TextInputType.text,
@@ -72,7 +79,7 @@ class TaskBottomSheet extends StatelessWidget {
                   return locale.must_enter_description;
                 return null;
               },
-              maxLines: 5,
+              maxLines: 3,
               maxLength: 150,
             ),
             const SizedBox(
@@ -110,7 +117,7 @@ class TaskBottomSheet extends StatelessWidget {
                   FirebaseUtils(context).addToFirestore(data).then((value) {
                     EasyLoading.dismiss();
                     titleController.text="";
-                    descController.text="";
+                   descController.text="";
                     SnackerService(context).showSuccessMsg(locale.task_success_created);
                     Navigator.pop(context);
                   });

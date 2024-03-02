@@ -1,4 +1,3 @@
-import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:todo/features/settings/pages/settings_view.dart';
