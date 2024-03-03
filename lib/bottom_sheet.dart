@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/core/config/common.dart';
 import 'package:todo/core/config/constants/app_colors.dart';
 import 'package:todo/core/service/loading_sevice.dart';
 import 'package:todo/core/widgets/custom_textfield_widget.dart';
@@ -33,16 +34,16 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
     var locale = AppLocalizations.of(context)!;
     var mediaQuery = MediaQuery.of(context).size;
 
-    return Form(
-      key:formKey,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
-        width: mediaQuery.width,
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            color:
-                provider.isDark() ? AppColors.onPrimaryDarkColor : Colors.white),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+      width: mediaQuery.width,
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          color:
+              provider.isDark() ? AppColors.onPrimaryDarkColor : Colors.white),
+      child: Form(
+        key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -112,13 +113,13 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                       title: titleController.text,
                       description: descController.text,
                       isDone: false,
-                      dateTime:provider.selectedTime,
+                      dateTime:Common.extractDate(provider.selectedTime),
                   );
-                  FirebaseUtils(context).addToFirestore(data).then((value) {
+                  FirebaseUtils.addToFirestore(data).then((value) {
                     EasyLoading.dismiss();
                     titleController.text="";
                    descController.text="";
-                    SnackerService(context).showSuccessMsg(locale.task_success_created);
+                    SnackerService.showSuccessMsg(locale.task_success_created,context);
                     Navigator.pop(context);
                   });
                 }

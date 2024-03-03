@@ -220,11 +220,10 @@ class _LoginViewState extends State<LoginView> {
   }
  void _login(BuildContext context){
    if (formKey.currentState!.validate()) {
-     FirebaseUtils(context)
-         .login(emailController.text, passwordController.text)
+     FirebaseUtils.login(emailController.text, passwordController.text,context)
          .then((value) {
        if (value) {
-         SnackerService(context).showSuccessMsg(locale.success_login);
+         SnackerService.showSuccessMsg(locale.success_login,context);
          EasyLoading.dismiss();
          Navigator.pushReplacementNamed(context, LayoutView.routeName);
        }

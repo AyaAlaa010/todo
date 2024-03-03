@@ -37,7 +37,19 @@
   "must_enter_description":  "يجب ادخال تفاصيل المهام",
   "add_task":  "ضف مهام",
   "select_time": "اختار الوقت",
-  "task_success_created": "تم انشاء المهام بنجاح"
+  "task_success_created": "تم انشاء المهام بنجاح",
+  "delete": "حذف",
+  "todo_list":"قائمة المهام",
+  "task_success_deleted":"تم جذف المهام بنجاج ",
+  "done":"تم!",
+  "task_success_update":"تم تعديل المهام بنجاح",
+  "wrong_email_password":"اعد ادخال البريد الالكتروني و كلمه المرور بشكل صحيح "
+
+
+
+
+
+
 
 
 

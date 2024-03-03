@@ -3,63 +3,77 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:todo/core/config/common.dart';
 import 'package:todo/models/task_model.dart';
 import 'core/service/snakers_service.dart';
 
-class FirebaseUtils{
-  BuildContext context;
-  late var locale;
+class FirebaseUtils {
+  // locale = AppLocalizations.of(context)!;
 
-  FirebaseUtils(this.context){
-     locale= AppLocalizations.of(context)!;
+  static Future<void> updateTask(TaskModel taskModel) {
+    var collectionRef = getCollectionRef();
+    var docRef = collectionRef.doc(taskModel.id);
+    return docRef.update(taskModel.toFirestore());
   }
 
+  static Future<void> deleteTask(TaskModel taskModel) {
+    var collectionRef = getCollectionRef();
+    var docRef = collectionRef.doc(taskModel.id);
+    return docRef.delete();
+  }
 
- CollectionReference<TaskModel> getCollectionRef(){
-    var dp =FirebaseFirestore.instance;
+  static CollectionReference<TaskModel> getCollectionRef() {
+    var dp = FirebaseFirestore.instance;
     return dp.collection("tasks").withConverter<TaskModel>(
-        fromFirestore:(snapshot,_)=> TaskModel.fromFirestore(snapshot.data()!),
-        toFirestore: (taskModel,_)=>taskModel.toFirestore());
+        fromFirestore: (snapshot, _) =>
+            TaskModel.fromFirestore(snapshot.data()!),
+        toFirestore: (taskModel, _) => taskModel.toFirestore());
   }
 
-    Future <void> addToFirestore( TaskModel taskModel) {
-    var collectionRef=getCollectionRef();
-    var docRef= collectionRef.doc();
-    taskModel.id=docRef.id;
+  static Future<void> addToFirestore(TaskModel taskModel) {
+    var collectionRef = getCollectionRef();
+    var docRef = collectionRef.doc();
+    taskModel.id = docRef.id;
     return docRef.set(taskModel);
-    }
+  }
 
+  Future<List<TaskModel>> getDataFromFirestore(DateTime dateTime) async {
+    var collectionRef = getCollectionRef().where("dateTime",
+        isEqualTo: Common.extractDate(dateTime).microsecondsSinceEpoch);
+    var data = await collectionRef.get();
+    return data.docs.map((e) => e.data()).toList();
+  }
 
+  static Stream<QuerySnapshot<TaskModel>> getStreamDataFromFirestore(
+      DateTime dateTime) {
+    var collectionRef = getCollectionRef().where("dateTime",
+        isEqualTo: Common.extractDate(dateTime).microsecondsSinceEpoch);
+    return collectionRef.snapshots();
+  }
 
-
-
-  Future <bool> createAccount(String email,String password) async{
+  static Future<bool> createAccount(
+      String email, String password, var context) async {
+    var locale = AppLocalizations.of(context)!;
     EasyLoading.show();
 
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-      print(" user= ${credential.user!.email}");
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
       return Future.value(true);
-
     } on FirebaseAuthException catch (e) {
-      print("___________${e.message}");
       if (e.code == 'weak-password') {
-        print(locale.password_weak);
-        SnackerService(context).showErrorMsg(locale.password_weak);
+        SnackerService.showErrorMsg(locale.password_weak, context);
         EasyLoading.dismiss();
         return Future.value(false);
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-        SnackerService(context).showErrorMsg(locale.account_already_exist);
+        SnackerService.showErrorMsg(locale.account_already_exist, context);
+        EasyLoading.dismiss();
+        return Future.value(false);
+      } else {
+        SnackerService.showErrorMsg(locale.unkown_error, context);
         EasyLoading.dismiss();
         return Future.value(false);
       }
-      else{
-        SnackerService(context).showErrorMsg(locale.unkown_error);
-        EasyLoading.dismiss();
-        return Future.value(false);
-      }
-
     } catch (e) {
       print(e);
       EasyLoading.dismiss();
@@ -67,35 +81,32 @@ class FirebaseUtils{
     }
   }
 
-  Future <bool> login(String email, String password)async{
+  static Future<bool> login(
+      String email, String password, BuildContext context) async {
+    var locale = AppLocalizations.of(context)!;
+
     EasyLoading.show();
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email,
-          password: password
-      );
-     return Future.value(true);
-
+      final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      return Future.value(true);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-        SnackerService(context).showErrorMsg(locale.no_user_found_email);
+        SnackerService.showErrorMsg(locale.no_user_found_email, context);
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-        SnackerService(context).showErrorMsg(locale.wrong_password_user);
-      }else{
-        SnackerService(context).showErrorMsg(locale.unkown_error);
+        SnackerService.showErrorMsg(locale.wrong_password_user, context);
+      }else if(e.code=="invalid-credential"){
+        SnackerService.showErrorMsg(locale.wrong_email_password, context);
+      }
+      else {
+        SnackerService.showErrorMsg(locale.unkown_error, context);
       }
       EasyLoading.dismiss();
       return Future.value(false);
-    }catch (e) {
+    } catch (e) {
       print(e);
       EasyLoading.dismiss();
       return Future.value(false);
     }
   }
-
-
-
-
 }

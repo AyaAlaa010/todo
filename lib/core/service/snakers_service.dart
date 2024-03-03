@@ -5,15 +5,12 @@ import 'package:todo/core/config/constants/app_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SnackerService{
-  BuildContext context;
- late  var theme,locale;
-  SnackerService(this.context){
-     theme=Theme.of(context);
-     locale= AppLocalizations.of(context)!;
-  }
 
 
-  showSuccessMsg(String msg){
+
+  static showSuccessMsg(String msg, BuildContext context){
+   var  theme=Theme.of(context);
+   var  locale= AppLocalizations.of(context)!;
     BotToast.showCustomNotification(toastBuilder: (cancelFunc) {
       return Material(
         child:Container(
@@ -29,7 +26,6 @@ class SnackerService{
                 BotToast.cleanAll();
               },
 
-
               child: Text(locale.close,style:theme.textTheme.labelMedium!.copyWith(color: AppColors.primaryColor),textAlign: TextAlign.center,))),
 
             ],
@@ -40,11 +36,12 @@ class SnackerService{
 
       );
 
-    },duration: const Duration(seconds: 10),dismissDirections: [DismissDirection.endToStart]);
+    },duration: const Duration(seconds: 5),dismissDirections: [DismissDirection.endToStart]);
 
   }
-  showErrorMsg(String msg){
-
+   static showErrorMsg(String msg,BuildContext context){
+    var  theme=Theme.of(context);
+    var  locale= AppLocalizations.of(context)!;
     BotToast.showCustomNotification(toastBuilder: (cancelFunc) {
       return Material(
           child:Container(
@@ -66,7 +63,7 @@ class SnackerService{
           )
       );
 
-    },duration: const Duration(seconds: 10),dismissDirections: [DismissDirection.endToStart]);
+    },duration: const Duration(seconds: 5),dismissDirections: [DismissDirection.endToStart]);
   }
 
 

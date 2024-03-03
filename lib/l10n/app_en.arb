@@ -26,7 +26,7 @@
   "account_created_success":"your Account Created Successfully",
   "no_user_found_email":"No user found for that email.",
   "wrong_password_user":"Wrong password provided for that user.",
-  "unkown_error":"Unknown Error",
+  "unkown_error":"Some Thing went wrong",
   "account_already_exist":  "The account already exists for that email.",
  "password_weak": "The password provided is too weak.",
  "close": "close",
@@ -37,5 +37,11 @@
   "must_enter_description":  " you must enter the description",
   "add_task":  "Add Task",
   "select_time": "Select Time",
-  "task_success_created": "Task successfully created"
+  "task_success_created": "Task successfully created",
+  "delete": "Delete",
+  "todo_list":"To Do List",
+  "task_success_deleted":"Task is Successfully Deleted ",
+  "done":"Done!",
+  "task_success_update":"Task Successfully updated",
+  "wrong_email_password":"wrong email or password , try again"
 }

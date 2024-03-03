@@ -37,7 +37,6 @@ class SettingsProvider extends ChangeNotifier {
 
 
   Future selectTime (BuildContext context) async{
-
     var  currentSelectedTime=  await showDatePicker(context: context,
         firstDate: DateTime.now(),
         lastDate: DateTime.now().add( const Duration(days: 365)));

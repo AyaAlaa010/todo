@@ -2,14 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/firebase_utils.dart';
 import '../bottom_sheet.dart';
-import '../models/task_model.dart';
 import '../settings_providers.dart';
 
 class LayoutView extends StatelessWidget {
   static String routeName = "LayoutView";
-  const LayoutView({super.key});
+
+  LayoutView({super.key});
 
   @override
   Widget build(BuildContext context) {

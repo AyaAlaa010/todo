@@ -239,11 +239,11 @@ class _RegisterViewState extends State<RegisterView> {
 
   void _register() {
     if (formKey.currentState!.validate()) {
-      FirebaseUtils(context)
-          .createAccount(emailController.text, passwordController.text)
+      FirebaseUtils
+          .createAccount(emailController.text, passwordController.text,context)
           .then((value) {
         if (value) {
-          SnackerService(context).showSuccessMsg(locale.account_created_success);
+          SnackerService.showSuccessMsg(locale.account_created_success,context);
           EasyLoading.dismiss();
           Navigator.pushNamedAndRemoveUntil(context, LayoutView.routeName, (route) => false,);
         }

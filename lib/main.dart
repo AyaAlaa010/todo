@@ -37,7 +37,7 @@ class MyApplication extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
-      initialRoute: LayoutView.routeName,
+      initialRoute: LoginView.routeName,
       darkTheme: ApplicationThmeManager.darkTheme ,
       theme: ApplicationThmeManager.lightTheme,
       themeMode: provider.currentTheme,
@@ -46,7 +46,7 @@ class MyApplication extends StatelessWidget {
       locale: Locale(provider.currentLanguage),
       routes: {
         SplashScreen.routeName:(context)=> const SplashScreen(),
-        LayoutView.routeName:(context)=> const LayoutView(),
+        LayoutView.routeName:(context)=>  LayoutView(),
         LoginView.routeName:(context)=> LoginView(),
         RegisterView.routeName:(context)=>  RegisterView()
       },
