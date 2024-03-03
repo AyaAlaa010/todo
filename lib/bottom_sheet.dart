@@ -46,91 +46,104 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
         key: formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              locale.add_new_task,
-              textAlign: TextAlign.center,
-              style: provider.isDark()
-                  ? theme.textTheme.bodyLarge!.copyWith(color: Colors.white)
-                  : theme.textTheme.bodyLarge!
-                      .copyWith(color: AppColors.darkText),
+            Expanded(
+              flex: 1,
+              child: Text(
+                locale.add_new_task,
+                textAlign: TextAlign.center,
+                style: provider.isDark()
+                    ? theme.textTheme.bodyLarge!.copyWith(color: Colors.white)
+                    : theme.textTheme.bodyLarge!
+                        .copyWith(color: AppColors.darkText),
+              ),
             ),
-            const SizedBox(height: 10),
-            CustomTextField(
-              controller: titleController,
-              textInputType: TextInputType.text,
-              suffixIcon: const Icon(null),
-              hintText: locale.enter_title,
-              validator: (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return locale.must_enter_title;
-                }
-                return null;
-              },
+           const SizedBox(height: 10),
+            Expanded(flex: 1,
+              child: CustomTextField(
+                controller: titleController,
+                textInputType: TextInputType.text,
+                suffixIcon: const Icon(null),
+                hintText: locale.enter_title,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return locale.must_enter_title;
+                  }
+                  return null;
+                },
+              ),
             ),
-            const SizedBox(
-              height: 20,
+
+            Expanded(
+              flex: 3,
+              child: CustomTextField(
+                controller: descController,
+                hintText: locale.enter_description,
+                suffixIcon: const Icon(null),
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty)
+                    return locale.must_enter_description;
+                  return null;
+                },
+                maxLines: 3,
+                maxLength: 150,
+              ),
             ),
-            CustomTextField(
-              controller: descController,
-              hintText: locale.enter_description,
-              suffixIcon: const Icon(null),
-              validator: (value) {
-                if (value == null || value.trim().isEmpty)
-                  return locale.must_enter_description;
-                return null;
-              },
-              maxLines: 3,
-              maxLength: 150,
+
+            Expanded(
+              flex: 1,
+              child: Text(
+                locale.select_time,
+                style: provider.isDark()
+                    ? theme.textTheme.bodyMedium!.copyWith(color: Colors.white)
+                    : theme.textTheme.bodyMedium!
+                        .copyWith(color: AppColors.darkText),
+              ),
             ),
-            const SizedBox(
-              height: 10,
+            Expanded(
+              flex: 1,
+              child: TextButton(
+                  onPressed: () {
+                  provider.selectTime(context);
+                  },
+                  child: Text(
+                    DateFormat.yMMMMd().format(provider.selectedTime),
+                    style: provider.isDark()
+                        ? theme.textTheme.labelMedium
+                        : theme.textTheme.labelMedium!
+                            .copyWith(color: AppColors.darkText),
+                  )),
             ),
-            Text(
-              locale.select_time,
-              style: provider.isDark()
-                  ? theme.textTheme.bodyMedium!.copyWith(color: Colors.white)
-                  : theme.textTheme.bodyMedium!
-                      .copyWith(color: AppColors.darkText),
-            ),
-            TextButton(
+            const SizedBox(height: 20,),
+            Expanded(flex: 1,
+              child: ElevatedButton(
                 onPressed: () {
-                provider.selectTime(context);
+                  if (formKey.currentState!.validate()) {
+                    EasyLoading.show();
+                    TaskModel data = TaskModel(
+                        title: titleController.text,
+                        description: descController.text,
+                        isDone: false,
+                        dateTime:Common.extractDate(provider.selectedTime),
+                    );
+                    FirebaseUtils.addToFirestore(data).then((value) {
+                      EasyLoading.dismiss();
+                      titleController.text="";
+                     descController.text="";
+                      SnackerService.showSuccessMsg(locale.task_success_created,context);
+                      Navigator.pop(context);
+                    });
+                  }
                 },
                 child: Text(
-                  DateFormat.yMMMMd().format(provider.selectedTime),
-                  style: provider.isDark()
-                      ? theme.textTheme.labelMedium
-                      : theme.textTheme.labelMedium!
-                          .copyWith(color: AppColors.darkText),
-                )),
-            Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  EasyLoading.show();
-                  TaskModel data = TaskModel(
-                      title: titleController.text,
-                      description: descController.text,
-                      isDone: false,
-                      dateTime:Common.extractDate(provider.selectedTime),
-                  );
-                  FirebaseUtils.addToFirestore(data).then((value) {
-                    EasyLoading.dismiss();
-                    titleController.text="";
-                   descController.text="";
-                    SnackerService.showSuccessMsg(locale.task_success_created,context);
-                    Navigator.pop(context);
-                  });
-                }
-              },
-              child: Text(
-                locale.add_task,
-                style:
-                    theme.textTheme.bodyMedium!.copyWith(color: Colors.white),
+                  locale.add_task,
+                  style:
+                      theme.textTheme.bodyMedium!.copyWith(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor),
               ),
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor),
             )
           ],
         ),
