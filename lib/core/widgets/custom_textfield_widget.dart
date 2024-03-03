@@ -7,6 +7,7 @@ import '../config/constants/app_colors.dart';
 
 class CustomTextField extends StatefulWidget {
   bool  isObscure;
+  bool isPassword;
   String  obscureCharacter;
   String? hintText;
   Icon? suffixIcon;
@@ -18,6 +19,7 @@ class CustomTextField extends StatefulWidget {
   CustomTextField(
       {super.key,
       this.isObscure = false,
+        this.isPassword=false,
       this.hintText,
       this.obscureCharacter = "*",
       this.suffixIcon,
@@ -50,7 +52,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         suffixIcon: InkWell(
             onTap: () {
               setState(() {
+                if(widget.isPassword){
                 widget.isObscure = !widget.isObscure;
+                }
               });
             },
             child: widget.suffixIcon),

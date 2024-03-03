@@ -134,6 +134,8 @@ class _RegisterViewState extends State<RegisterView> {
                         fontWeight: FontWeight.bold),
                   ),
                   CustomTextField(
+                    isPassword: true,
+
                     controller: passwordController,
                     validator: (value) {
                       if (value == null ||
@@ -170,6 +172,8 @@ class _RegisterViewState extends State<RegisterView> {
                         fontWeight: FontWeight.bold),
                   ),
                   CustomTextField(
+                    isPassword: true,
+
                     validator: (value) {
                       if (value == null ||
                           value.toString().trim().isEmpty) {

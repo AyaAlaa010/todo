@@ -124,6 +124,7 @@ class _LoginViewState extends State<LoginView> {
                                   fontWeight: FontWeight.bold),
                         ),
                         CustomTextField(
+                          isPassword: true,
                           controller: passwordController,
                           validator: (value) {
                             if (value == null ||
