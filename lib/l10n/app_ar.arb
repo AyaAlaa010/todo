@@ -1,0 +1,87 @@
+{
+  "settings": "الاعدادات",
+  "language": "اللغه",
+  "mode": "النمط",
+  "login": "تسجيل الدخول",
+  "welecome_back": "مرحبًا بعودتك!",
+  "email": "البريد الإلكتروني",
+  "enter_email": "ادخل بريدك الإلكتروني",
+  "enter_password": "ادخل كلمه المرور",
+  "password": "كلمه المرور",
+  "or": "أو",
+  "create_new_account": "إنشاء حساب جديد!..",
+  "strong_password":"أدخل كلمه مرور قويه",
+  "password_empty":"ادخل كلمه المرور",
+  "valid_email":"ادخل صيغه صحيحه للبريد الالكترون ",
+  "email_empty":" ادخل البريد الالكتروني",
+  "success_login":"تم الدخول بنجاح",
+  "create_account":"إنشاء حساب",
+  "full_name":"الاسم بالكامل",
+  "full_name_empty":"ادخل الاسم بالكامل",
+  "enter_name": "ادخل اسمك",
+  "confirm_password": "تأكيد رقم المرور",
+  "enter_confirm_password":" ادخل تأكيد رقم المرو ",
+  "confirm_password_empty":"ادخل رمز تأكيد المرور",
+  "confirm_not_match_password":"رقم المرور التأكيدي لا يساوي رمز المرور",
+  "account_created_success":"تم انشاء حسابك بنجاح",
+  "no_user_found_email":"لا يوجد مستخدم لهذا البريد الالكتروني",
+  "wrong_password_user":"رقم المرور غير صحيح",
+  "unkown_error":"خطأ غير معروف",
+  "account_already_exist":  "هذا البريد الالكتروني خاص بحساب موجود من قبل ",
+  "password_weak": "رمز المرور الخاص بك ضعيف",
+  "close": "غلق",
+  "add_new_task":"ادخل مهام جديده",
+  "enter_title": "ادخل عنوان المهام",
+  "must_enter_title": "يجب ادخال العنوان",
+  "enter_description": "ادخل تفاصيل المهام",
+  "must_enter_description":  "يجب ادخال تفاصيل المهام",
+  "add_task":  "ضف مهام",
+  "select_time": "اختار الوقت",
+  "task_success_created": "تم انشاء المهام بنجاح",
+  "delete": "حذف",
+  "todo_list":"قائمة المهام",
+  "task_success_deleted":"تم جذف المهام بنجاج ",
+  "done":"تم!",
+  "task_success_update":"تم تعديل المهام بنجاح",
+  "wrong_email_password":"اعد ادخال البريد الالكتروني و كلمه المرور بشكل صحيح "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
