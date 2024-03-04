@@ -23,7 +23,7 @@ void main() async {
 
   runApp(
       ChangeNotifierProvider(
-          create: (context)=> SettingsProvider(),
+          create: (context)=> SettingsProvider()..getThemeMode()..getLanguage(),
           child:  const MyApplication())
   );}
 
