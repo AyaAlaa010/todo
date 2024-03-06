@@ -36,7 +36,7 @@ Tools:
 
 
   Light Mode:
-![Screenshot_20240306_152232](https://github.com/AyaAlaa010/todo/assets/53278547/cd229db8-ff63-4d69-b21f-b4e640d72de7)
+![Screenshot_20240306_152416](https://github.com/AyaAlaa010/todo/assets/53278547/67b61e6d-cceb-4e3b-a960-1c284b5d51a5)
 
 
  Resources:
