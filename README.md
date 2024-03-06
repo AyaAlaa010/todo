@@ -1,16 +1,50 @@
-# todo
+ TODo Application is developed using flutter 
 
-A new Flutter project.
+ ToDo Content :
+ 
+ you can login or create your account if you do not have account.
+ 
+ you can select the day you want then write your tasks .
+ 
+ you can also show the tasks for every day .
+ 
+ you can make update to it if it is done or not.
+ 
+ you can also delete the task if you want by swaping it.
+ 
+ you can change the language from English to Arabic or the obsite.
+ 
+ you can choose  your favourite theme  dark or light .
+ 
+ 
+Tools:
 
-## Getting Started
+  Firebase -> { Authontication & FireStore}
+  
+  SharedPreferences
 
-This project is a starting point for a Flutter application.
+  Localization -> The Application exists with Arabic and English Language
 
-A few resources to get you started if this is your first Flutter project:
+  Themes -> you can change the light theme to dark them with different style
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  StateMangement-> Provider
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  SplashScreen 
+
+  MaterialDesign
+
+
+
+  Light Mode:
+![Screenshot_20240306_152232](https://github.com/AyaAlaa010/todo/assets/53278547/cd229db8-ff63-4d69-b21f-b4e640d72de7)
+
+
+ Resources:
+
+  - https://pub.dev/
+
+  - https://docs.flutter.dev/
+  - 
+  - https://firebase.google.com/docs/build
+
+
