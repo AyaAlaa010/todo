@@ -34,11 +34,6 @@ Tools:
   MaterialDesign
 
 
-
-  Light Mode:
-![Screenshot_20240306_152416](https://github.com/AyaAlaa010/todo/assets/53278547/67b61e6d-cceb-4e3b-a960-1c284b5d51a5)
-
-
  Resources:
 
   - https://pub.dev/
