@@ -8,7 +8,7 @@
  
  you can also show the tasks for every day .
  
- you can make update to it if it is done or not.
+ you can make update to the task if it is done or not.
  
  you can also delete the task if you want by swaping it.
  
