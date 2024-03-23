@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/features/edite/pages/edite_view.dart';
 import 'package:todo/features/layout_view.dart';
 import 'package:todo/features/login/pages/login_view.dart';
 import 'package:todo/features/register/pages/register_view.dart';
@@ -48,7 +49,8 @@ class MyApplication extends StatelessWidget {
         SplashScreen.routeName:(context)=> const SplashScreen(),
         LayoutView.routeName:(context)=>  LayoutView(),
         LoginView.routeName:(context)=> LoginView(),
-        RegisterView.routeName:(context)=>  RegisterView()
+        RegisterView.routeName:(context)=>  RegisterView(),
+        EditeView.routeName:(context)=> EditeView()
       },
     );
   }

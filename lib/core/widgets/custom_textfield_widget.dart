@@ -11,8 +11,11 @@ class CustomTextField extends StatefulWidget {
   String  obscureCharacter;
   String? hintText;
   Icon? suffixIcon;
+
   int maxLines;
   int ? maxLength;
+  final void Function(String?)? onChanged;
+   String ?  initialValue;
   TextInputType? textInputType;
   FormFieldValidator<String>? validator;
   TextEditingController ?  controller;
@@ -26,8 +29,10 @@ class CustomTextField extends StatefulWidget {
       this.maxLines = 1,
         this.maxLength,
       this.textInputType,
+        this.initialValue,
       this.validator,
-      this.controller
+      this.controller,
+       this.onChanged,
       });
 
   @override
@@ -40,6 +45,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
     var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     return TextFormField(
+       onChanged: widget.onChanged,
+       initialValue: widget.initialValue,
       keyboardType: widget.textInputType,
       obscureText: widget.isObscure!,
       maxLines: widget.maxLines,
@@ -61,9 +68,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         hintText: widget.hintText,
         focusedBorder: const UnderlineInputBorder(
             borderSide:
-                const BorderSide(color: AppColors.primaryColor, width: 2.5)),
+                 BorderSide(color: AppColors.primaryColor, width: 2.5)),
         errorBorder: const UnderlineInputBorder(
-            borderSide: const BorderSide(color: Colors.red, width: 2.5)),
+            borderSide:  BorderSide(color: Colors.red, width: 2.5)),
         errorStyle:theme.textTheme.labelMedium!.copyWith(color:Colors.red)
       ),
       validator: widget.validator,

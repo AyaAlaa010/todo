@@ -43,7 +43,10 @@
   "task_success_deleted":"تم جذف المهام بنجاج ",
   "done":"تم!",
   "task_success_update":"تم تعديل المهام بنجاح",
-  "wrong_email_password":"اعد ادخال البريد الالكتروني و كلمه المرور بشكل صحيح "
+  "wrong_email_password":"اعد ادخال البريد الالكتروني و كلمه المرور بشكل صحيح ",
+  "save_changes": "حفظ التغيرات",
+  "edit_task": "تعديل المهام"
+
 
 
 
