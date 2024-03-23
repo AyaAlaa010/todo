@@ -43,5 +43,7 @@
   "task_success_deleted":"Task is Successfully Deleted ",
   "done":"Done!",
   "task_success_update":"Task Successfully updated",
-  "wrong_email_password":"wrong email or password , try again"
+  "wrong_email_password":"wrong email or password , try again",
+  "save_changes": "Save Changes",
+  "edit_task": "Edit Task"
 }
